@@ -1,7 +1,7 @@
 import time
 import threading
 			#rum	vodka	tequila	oj		gin		coke	mmix
-drinkmenu = [[0,	0,		20,		0,		0,		0,		60],	#margarita
+drinkmenu =  [[0,	0,		20,		0,		0,		0,		60],	#margarita
 			 [20,	0,		0,		0,		0,		60,		0],		#rum n coke
 			 [7,	7,		7,		7,		7,		40,		0],		#long island
 			 [0,	20,		0,		60,		0,		0,		0],		#screw driver
@@ -9,13 +9,13 @@ drinkmenu = [[0,	0,		20,		0,		0,		0,		60],	#margarita
 			 [0,	0,		0,		60,		20,		0,		0]]		#gin n juice
 
 pump_config =	{
-	1	:	17, 	#"rum",
-	2	:	18, 	#"vodka",
-	3	:	19,		#"tequila",
-	4	:	20,		#"oj",
-	5	:	21,		#"gin",
-	6	:	22,		#"coke",
-	7	:	23,		#"mmix"
+	1	:	23, 	#"rum",
+	2	:	24, 	#"vodka",
+	3	:	12,		#"tequila",
+	4	:	16,		#"oj",
+	5	:	20,		#"gin",
+	6	:	21,		#"coke",
+	7	:	26,		#"mmix"
 }  #pump	pin
 
 drink_index =	{
