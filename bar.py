@@ -1,3 +1,4 @@
+import RPi.GPIO as GPIO
 import time
 import threading
 			#rum	vodka	tequila	oj		gin		coke	mmix
@@ -11,11 +12,11 @@ drinkmenu =  [[0,	0,		20,		0,		0,		0,		60],	#margarita
 pump_config =	{
 	1	:	23, 	#"rum",
 	2	:	24, 	#"vodka",
-	3	:	12,		#"tequila",
-	4	:	16,		#"oj",
-	5	:	20,		#"gin",
-	6	:	21,		#"coke",
-	7	:	26,		#"mmix"
+	3	:	25,		#"tequila",
+	4	:	12,		#"oj",
+	5	:	16,		#"gin",
+	6	:	20,		#"coke",
+	7	:	21,		#"mmix"
 }  #pump	pin
 
 drink_index =	{
@@ -27,16 +28,30 @@ drink_index =	{
 	"gin n juice"		:	5
 }
 
+def setup_GPIO():
+	GPIO.setmode(GPIO.BCM)
+	GPIO.setwarnings(False)
+	GPIO.setup(23, GPIO.OUT)
+	GPIO.setup(24, GPIO.OUT)
+	GPIO.setup(25, GPIO.OUT)
+	GPIO.setup(12, GPIO.OUT)
+	GPIO.setup(16, GPIO.OUT)
+	GPIO.setup(20, GPIO.OUT)
+	GPIO.setup(21, GPIO.OUT)
+
 def turnOn(pin, seconds):
 	print "Pin %d seconds %d\n" % (pin, seconds)
+	GPIO.output(pin, GPIO.LOW)
 	time.sleep(seconds)
+	GPIO.output(pin, GPIO.HIGH)
 
 def gautam_function(drink):
 	print "Hello World"
 
 	menu_idx = drink_index.get(drink)
 	pumpThreads = []
-	for pump in range(0, 6):
+	for pump in range(0, 7):
+		print pump
 		seconds = drinkmenu[menu_idx][pump]
 		if (0 != seconds):
 			pin = pump_config.get(pump + 1)
@@ -49,6 +64,7 @@ def gautam_function(drink):
 	print "done"
 
 def main():
+	setup_GPIO()
 	gautam_function("long island")
 
 main()
